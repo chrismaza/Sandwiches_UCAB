@@ -6,6 +6,36 @@ import sys
 #######################       FUNCTIONS        ##################################
 #################################################################################
 
+def clear():
+    if name == "nt":
+        system("cls")
+    else:
+        system("clear")
+
+def tam_precio(tam):
+    if tam == 't':
+        return 580
+    elif tam == 'd':
+        return 430
+    elif tam == 'i':
+        return 280
+
+def precio_ing(ing):
+    if ing == 'ja':
+        return 40
+    elif ing == 'cha':
+        return 35
+    elif ing == 'pi':
+        return 30
+    elif ing == 'dq':
+        return 40
+    elif ing == 'ac':
+        return 57.5
+    elif ing == 'pp':
+        return 38.5
+    elif ing == 'sa':
+        return 62.5
+
 def opciones (nro):
     flag_tam = False
     flag_ing = False
@@ -48,10 +78,7 @@ def opciones (nro):
     sub_total(tamano,list_ing,precio_total)
     time.sleep(2)
     clear()
-    return precio_total   
-
-            
-
+    return precio_total
 
 ##############################################################################
 #########################       MAIN        ##################################
