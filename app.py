@@ -74,11 +74,44 @@ def opciones (nro):
                print('Debe seleccionar un ingrediente correcto!!')
     
     precio_total += precio_ingr
-               
+    sandwich ={"numero":nro,"tamano": tamano,"ingredientes": list_ing, "precio": precio_total}
+    global sandwiches_comprados
+    sandwiches_comprados.append(sandwich)               
     sub_total(tamano,list_ing,precio_total)
     time.sleep(2)
     clear()
     return precio_total
+
+def sub_total(tam,list_ing,precio):
+    print(f'Subtotal a pagar por un sandwich {tam} con {list_ing}: {precio}')
+
+def verificacion_total(nro_sandwiches,total):
+    opcion = " "
+    while opcion == " " :
+        print(f'El pedido tiene un total de {nro_sandwiches} sandwich(es) por un monto de: {total} ')
+        for i in sandwiches_comprados:
+           print('\n Sandwich numero : ',  i["numero"])
+           print("\n\t Tamaño : " + i["tamano"])
+           print("\n\t Ingredientes : ")
+           for j in i["ingredientes"]:
+               print(j)
+           print("\n\t Precio : ", i["precio"]) 
+        opcion  = str(input('\n ¿Está usted de acuerdo con esta transacción? Presione Enter para aceptar o "S" para salir \n'))
+        if opcion == "":
+            print(f'\n Gracias por su compra regrese pronto!')
+            time.sleep(4)
+            sys.exit
+        elif opcion == "s" or opcion == "S":
+            print(f'\n Gracias esperamos que regrese pronto!')
+            time.sleep(4)
+            sys.exit
+        else:
+            print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
+            opcion=" "
+            clear()
+            
+
+    
 
 ##############################################################################
 #########################       MAIN        ##################################
@@ -88,12 +121,10 @@ logo = """******************************************
 *          SANDWICHES UCAB               *
 ******************************************"""
 print(logo)
+sandwiches_comprados = list()
 nro_sandwiches = int(input('\n Numero de sandwiches que desea ordenar: '))
 total = 0.0
 for i in range(1,nro_sandwiches + 1):
    total += opciones(i) 
 
-print(f'El pedido tiene un total de {nro_sandwiches} sandwich(es) por un monto de: {total} ')
-print('Gracias por su compra regrese pronto!')
-time.sleep(5)
-sys.exit
+verificacion_total(nro_sandwiches,total)
