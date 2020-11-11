@@ -95,7 +95,10 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
            for j in i["ingredientes"]:
                print("\t\t\t"+ j)
            print("\n\t Precio : ", i["precio"]) 
-        opcion  = str(input('\n ¿Está usted de acuerdo con esta transacción? Presione Enter para aceptar o "s" para ordenar nuevamente: ')).lower()
+        opcion  = str(input('\n ¿Está usted de acuerdo con esta transacción? Presione: '
+                            '\n"Enter" para aceptar '
+                            '\n"s" para ordenar nuevamente: '
+                            '\n"c" para cancelar el pedido\n')).lower()
         if opcion == "":
             print(f'\n Gracias por su compra regrese pronto!')
             time.sleep(2)
@@ -103,6 +106,10 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
         elif opcion == "s":
             clear()
             main()
+        elif opcion == "c":
+            print("GRACIAS POR SU TIEMPO, VUELVA PRONTO")
+            sys.exit()
+
         else:
             print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
             opcion=" "
@@ -115,17 +122,24 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
 #########################       MAIN        ##################################
 ##############################################################################
 
-def main():    
+def main():
     logo = """******************************************
     *          SANDWICHES UCAB               *
     ******************************************"""
     print(logo)
     sandwiches_comprados = list()
-    nro_sandwiches = int(input('\n Numero de sandwiches que desea ordenar: '))
-    total = 0.0
-    for i in range(1,nro_sandwiches + 1):
-       total += opciones(i,sandwiches_comprados) 
+    valor = str(input('\n Numero de sandwiches que desea ordenar: '))
+    validar =valor.isdigit()
+    if not validar:
+        print('Ingrese nuevamente el numero de sandwiches sin letras\n'
+              'El numero de Sandwiches no puede ser mayor a 10\n\n')
+        main()
+    else:
+        nro_sandwiches = int(valor)
+        total = 0.0
+        for i in range(1,nro_sandwiches + 1):
+           total += opciones(i,sandwiches_comprados)
 
-    verificacion_total(nro_sandwiches,sandwiches_comprados,total)
+        verificacion_total(nro_sandwiches,sandwiches_comprados,total)
 
 main()
