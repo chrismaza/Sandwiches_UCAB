@@ -84,6 +84,17 @@ def opciones (nro,sandwiches_comprados):
 def sub_total(tam,list_ing,precio):
     print(f'Subtotal a pagar por un sandwich {tam} con {list_ing}: {precio}')
 
+def eliminar_sand(nro_sandwiches,sandwiches_comprados,total,nro_eliminar):
+    for i in sandwiches_comprados:
+        if i["numero"] == nro_eliminar:
+            nuevo_total = total - i["precio"]
+            nuevo_nro_sandwiches = nro_sandwiches - 1
+            sandwiches_comprados.remove(i)
+            clear()
+            verificacion_total(nuevo_nro_sandwiches,sandwiches_comprados,nuevo_total)
+    
+    
+
 def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
     opcion = " "
     while opcion == " " :
@@ -94,26 +105,52 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
            print("\n\t Ingredientes : ")
            for j in i["ingredientes"]:
                print("\t\t\t"+ j)
-           print("\n\t Precio : ", i["precio"]) 
-        opcion  = str(input('\n ¿Está usted de acuerdo con esta transacción? Presione: '
-                            '\n"Enter" para aceptar '
-                            '\n"s" para ordenar nuevamente: '
-                            '\n"c" para cancelar el pedido\n')).lower()
-        if opcion == "":
-            print(f'\n Gracias por su compra regrese pronto!')
-            time.sleep(2)
-            sys.exit
-        elif opcion == "s":
-            clear()
-            main()
-        elif opcion == "c":
-            print("GRACIAS POR SU TIEMPO, VUELVA PRONTO")
-            sys.exit()
+           print("\n\t Precio : ", i["precio"])
+        if  nro_sandwiches == 1:
+            opcion  = str(input('\n ¿Está usted de acuerdo con esta transacción? Presione: '
+                                '\n"Enter" para aceptar '
+                                '\n"o" para ordenar nuevamente: '
+                                '\n"c" para cancelar el pedido\n')).lower()
+            if opcion == "":
+                print(f'\n Gracias por su compra regrese pronto!')
+                time.sleep(2)
+                sys.exit
+            elif opcion == "o":
+                clear()
+                main()
+            elif opcion == "c":
+                print("GRACIAS POR SU TIEMPO, VUELVA PRONTO")
+                sys.exit()
 
-        else:
-            print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
-            opcion=" "
-            clear()
+            else:
+                print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
+                opcion=" "
+                clear()
+        
+        elif nro_sandwiches > 1:
+            opcion  = str(input('\n ¿Está usted de acuerdo con esta transacción? Presione: '
+                                '\n"Enter" para aceptar '
+                                '\n"e" para eliminar un sandwich: '
+                                '\n"o" para ordenar nuevamente: '
+                                '\n"c" para cancelar el pedido\n')).lower()
+            if opcion == "":
+                print(f'\n Gracias por su compra regrese pronto!')
+                time.sleep(2)
+                sys.exit
+            elif opcion == "o":
+                clear()
+                main()
+            elif opcion == "e":
+                nro_eliminar = int(input('\nIngrese el nro del sandwich a cancelar:  '))
+                eliminar_sand(nro_sandwiches,sandwiches_comprados,total,nro_eliminar)
+            elif opcion == "c":
+                print("GRACIAS POR SU TIEMPO, VUELVA PRONTO")
+                sys.exit()
+
+            else:
+                print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
+                opcion=" "
+                clear()
             
 
     
