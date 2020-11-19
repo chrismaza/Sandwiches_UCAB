@@ -110,7 +110,8 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
             opcion  = str(input('\n ¿Está usted de acuerdo con esta transacción? Presione: '
                                 '\n"Enter" para aceptar '
                                 '\n"o" para ordenar nuevamente: '
-                                '\n"c" para cancelar el pedido\n')).lower()
+                                '\n"c" para cancelar el pedido'
+                                '\n\nRespuesta: \n')).lower()
             if opcion == "":
                 print(f'\n Gracias por su compra regrese pronto!')
                 time.sleep(2)
@@ -132,7 +133,8 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
                                 '\n"Enter" para aceptar '
                                 '\n"e" para eliminar un sandwich: '
                                 '\n"o" para ordenar nuevamente: '
-                                '\n"c" para cancelar el pedido\n')).lower()
+                                '\n"c" para cancelar el pedido'
+                                '\n\nRespuesta: \n')).lower()
             if opcion == "":
                 print(f'\n Gracias por su compra regrese pronto!')
                 time.sleep(2)
