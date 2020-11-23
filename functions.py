@@ -135,6 +135,7 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
 
             else:
                 print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
+                time.sleep(2)
                 opcion=" "
                 clear()
         
@@ -161,6 +162,7 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
 
             else:
                 print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
+                time.sleep(2)
                 opcion=" "
                 clear()
 
