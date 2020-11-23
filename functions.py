@@ -11,6 +11,8 @@ def clear():
         system("cls")
     else:
         system("clear")
+        
+#################################################################################
 
 def tam_precio(tam):
     if tam == 't':
@@ -19,6 +21,8 @@ def tam_precio(tam):
         return 430
     elif tam == 'i':
         return 280
+
+#################################################################################
 
 def precio_ing(ing):
     if ing == 'ja':
@@ -35,6 +39,8 @@ def precio_ing(ing):
         return 38.5
     elif ing == 'sa':
         return 62.5
+
+#################################################################################
 
 def opciones (nro,sandwiches_comprados):
     flag_tam = False
@@ -81,8 +87,12 @@ def opciones (nro,sandwiches_comprados):
     clear()
     return precio_total
 
+#################################################################################
+
 def sub_total(tam,list_ing,precio):
     print(f'Subtotal a pagar por un sandwich {tam} con {list_ing}: {precio}')
+
+#################################################################################
 
 def eliminar_sand(nro_sandwiches,sandwiches_comprados,total,nro_eliminar):
     for i in sandwiches_comprados:
@@ -93,7 +103,7 @@ def eliminar_sand(nro_sandwiches,sandwiches_comprados,total,nro_eliminar):
             clear()
             verificacion_total(nuevo_nro_sandwiches,sandwiches_comprados,nuevo_total)
     
-    
+#################################################################################
 
 def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
     opcion = " "
@@ -153,3 +163,31 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
                 print(f'\n Error, no ha introducido una opción válida, por favor intente nuevamente')
                 opcion=" "
                 clear()
+
+#################################################################################
+
+def main():
+    logo = """******************************************
+    *          SANDWICHES UCAB               *
+    ******************************************"""
+    print(logo)
+    sandwiches_comprados = list()
+    valor = str(input('\n Numero de sandwiches que desea ordenar: '))
+    validar =valor.isdigit()
+    if not validar:
+        print('\nIngrese nuevamente el numero de sandwiches sin letras\n')
+        time.sleep(2)
+        clear()
+        main()
+    elif validar and int(valor)>10:
+        print('\nEl numero de Sandwiches no puede ser mayor a 10\n\n')
+        time.sleep(2)
+        clear()
+        main()
+    elif validar and int(valor)<10:
+        nro_sandwiches = int(valor)
+        total = 0.0
+        for i in range(1,nro_sandwiches + 1):
+           total += opciones(i,sandwiches_comprados)
+
+        verificacion_total(nro_sandwiches,sandwiches_comprados,total)
