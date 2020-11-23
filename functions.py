@@ -19,7 +19,7 @@ def main():
         time.sleep(2)
         clear()
         main()
-    elif validar or int(valor)>10:
+    elif validar and int(valor)>10:
         print('***El numero de Sandwiches no puede ser mayor a 10***\n\n')
         time.sleep(2)
         clear()
