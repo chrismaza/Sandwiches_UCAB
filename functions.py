@@ -149,10 +149,6 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
                     j= 'Salchichon'
                 print("\t\t\t" + j)
 
-           
-           for j in i["ingredientes"]:                     # Se visualiza los detalles del pedido con el precio total #
-               print("\t\t\t"+ j)
-
            print("\n\t Precio : ", i["precio"])
         
         if  nro_sandwiches == 1:                       # Cuando el pedido tiene un solo sandwich #
