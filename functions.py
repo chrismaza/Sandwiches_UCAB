@@ -123,11 +123,36 @@ def verificacion_total(nro_sandwiches,sandwiches_comprados,total):
         
         for i in sandwiches_comprados:
            print('\n Sandwich numero : ',  i["numero"])
+           if i["tamano"] == 't':
+                i["tamano"] = 'Triple'
+           elif i["tamano"] == 'd':
+               i["tamano"] = 'Doble'
+           elif i["tamano"] == 'i':
+                i["tamano"] = 'Individual'
            print("\n\t Tamaño : " + i["tamano"])
            print("\n\t Ingredientes : ")
+
+           for j in i["ingredientes"]:
+                if j == 'ja':
+                    j='Jamon' 
+                elif j == 'cha':
+                    j= 'Champi;ones'
+                elif j == 'pi':
+                    j= 'Pimenton'
+                elif j == 'dq':
+                    j= 'Doble Queso'
+                elif j == 'ac':
+                    j= 'Aceitunas'
+                elif j == 'pp':
+                    j= 'Pepperoni'
+                elif j == 'sa':
+                    j= 'Salchichon'
+                print("\t\t\t" + j)
+
            
            for j in i["ingredientes"]:                     # Se visualiza los detalles del pedido con el precio total #
                print("\t\t\t"+ j)
+
            print("\n\t Precio : ", i["precio"])
         
         if  nro_sandwiches == 1:                       # Cuando el pedido tiene un solo sandwich #
